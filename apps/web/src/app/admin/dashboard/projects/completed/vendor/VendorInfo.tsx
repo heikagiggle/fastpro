@@ -1,6 +1,7 @@
 import React from 'react';
 import { vendorDetails } from './data';
 import Link from 'next/link';
+import { StarIcon } from '../../../../components/icons/star';
 
 const VendorInfo = () => {
   return (
@@ -25,7 +26,12 @@ const VendorInfo = () => {
               <div className="flex flex-col gap-y-3 mt-auto">
                 <div>
                   <p className="text-xs font-semibold">Rating</p>
-                  <p className="text-sm">{vendor.rating}</p>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <StarIcon
+                      key={index}
+                      primaryColor={index < vendor.rating ? 'gold' : 'gray'}
+                    />
+                  ))}
                 </div>
                 <div>
                   <p className="text-xs font-semibold">Jobs completed</p>
