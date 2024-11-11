@@ -1,0 +1,54 @@
+name: Branch deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NX_NO_CLOUD: true
+      APP_NAME: zanga
+      AWS_APP_ID: ${{ format('zanga-{0}', (github.head_ref || github.ref_name)) }}
+      HOSTED: true
+      PRODUCTION_MODE: ${{ (github.head_ref || github.ref_name) == 'main' }}
+      WEBHOOK_SIGNATURE: ${{ secrets.WEBHOOK_SIGNATURE }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-skip-session-tagging: true
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Cache build
+        uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-pr-${{ env.ENV }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('apps/**/*', 'libs/**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-pr-${{ env.ENV }}-${{ hashFiles('package-lock.json') }}
+          path: |
+            .nx/cache/**/*
+            **/cdk.out/.cache/**/*
+      - name: Init env
+        run: npx nx run cli init
+      - name: Deploy Backend
+        run: npx nx deploy:backend infra
+      - name: Build and Clean Apps
+        run: npx nx run-many -t clean -p web api --parallel=2
+      - name: Deploy Apps
+        run: npx nx deploy:hosting infra
+      - name: Deploy DB
+        run: npx nx run deploy-db

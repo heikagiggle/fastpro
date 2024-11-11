@@ -1,0 +1,20 @@
+{
+  "name": "infra",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/infra/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project infra --web",
+  "targets": {
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/infra",
+        "commands": [
+          "npx cdk deploy --require-approval never"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}

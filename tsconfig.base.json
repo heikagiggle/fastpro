@@ -1,0 +1,51 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/components/*": ["libs/components/src/*"],
+      "@app/infra": ["libs/infra/src/index.ts"],
+      "@app/infra/type": ["libs/infra/src/types.ts"],
+      "@app/infra/schema": ["libs/infra/src/schema.ts"],
+      "@app/nest-helpers": ["libs/nest-helpers/src/index.ts"],
+      "@app/nest-helpers/*": ["libs/nest-helpers/src/*"],
+      "@app/nest-helpers/authorizers": [
+        "libs/nest-helpers/src/authorizers/index.ts"
+      ],
+      "@app/nest-helpers/cache": ["libs/nest-helpers/src/cache/index.ts"],
+      "@app/nest-helpers/db": ["libs/nest-helpers/src/db/index.ts"],
+      "@app/nest-helpers/helpers": ["libs/nest-helpers/src/helpers/index.ts"],
+      "@app/nest-helpers/http": ["libs/nest-helpers/src/http/index.ts"],
+      "@app/nest-helpers/microservice": [
+        "libs/nest-helpers/src/microservice/index.ts"
+      ],
+      "@app/nest-helpers/microservice/types": [
+        "libs/nest-helpers/src/microservice/types.ts"
+      ],
+      "@app/schema": ["libs/schema/src/index.ts"],
+      "@app/schema/*": ["libs/schema/src/*"],
+      "@app/schema/request": ["libs/schema/src/request/index.ts"],
+      "@app/schema/response": ["libs/schema/src/response/index.ts"],
+      "@app/schema/types": ["libs/schema/src/types/index.ts"],
+      "@app/server": ["libs/server/src/index.ts"],
+      "@app/server/*": ["libs/server/src/*"],
+      "@app/types": ["libs/types/src/index.ts"]
+
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
