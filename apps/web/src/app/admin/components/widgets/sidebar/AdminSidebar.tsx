@@ -58,7 +58,7 @@ const AdminSidebar = () => {
         Logo: SettingsIcon,
         label: 'Settings',
       },
-      { url: '/admin/dashboard/support/', Logo: SupportIcon, label: 'Support' },
+      // { url: '/admin/dashboard/support/', Logo: SupportIcon, label: 'Support' },
     ],
     []
   );

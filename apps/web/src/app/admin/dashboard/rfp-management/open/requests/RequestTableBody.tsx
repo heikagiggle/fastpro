@@ -1,6 +1,7 @@
 import { TableCell, TableRow } from '@app/components/lib/ui/table';
 import { NewbidProps } from '../../../components/table-body/data';
 import Link from 'next/link';
+import { StarIcon } from '../../../../components/icons/star';
 
 type Props = {
   data: NewbidProps;
@@ -26,7 +27,11 @@ export function RequestTableBody({ data }: Props) {
         <p className="w-[397px] truncate">{data.summary}</p>
       </TableCell>
       <TableCell className={'w-[135px]'}>
-        <p>{data.rating}</p>
+        <div className="flex">
+          {Array.from({ length: 5 }, (_, index) => (
+            <StarIcon key={index} primaryColor={index < data.rating ? 'gold' : 'gray'} />
+          ))}
+        </div>
       </TableCell>
       <TableCell className={'w-[135px]'}>
         <p>{data.date}</p>
