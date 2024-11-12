@@ -69,7 +69,7 @@ const AddAccount = ({ onNextStep }: ContainerProps) => {
             />
 
             <TextInput
-              name={'accountt_number'}
+              name={'account_number'}
               label={`Account Number`}
               placeholder={'Enter your account number'}
             />

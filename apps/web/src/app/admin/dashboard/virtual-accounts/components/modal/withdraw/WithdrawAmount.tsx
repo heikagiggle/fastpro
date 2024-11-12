@@ -14,7 +14,7 @@ const WithdrawSchema = z.object({
 });
 
 export type WithdrawData = z.infer<typeof WithdrawSchema>;
-const WithdrawAmount = ({ onNextStep }: ContainerProps) => {
+const WithdrawAmount = ({ onNextStep, onAddAccount }: ContainerProps & { onAddAccount?: () => void }) => {
   const router = useRouter();
 
   const handler = useForm<WithdrawData>({
@@ -26,6 +26,7 @@ const WithdrawAmount = ({ onNextStep }: ContainerProps) => {
     console.log(data);
     onNextStep && onNextStep();
   };
+
   return (
     <Form {...handler}>
       <form
@@ -39,7 +40,11 @@ const WithdrawAmount = ({ onNextStep }: ContainerProps) => {
           </div>
 
           <div className="border-b border-t my-4 border-[#0000004D]">
-            <button className="flex gap-x-2 items-center my-6 px-2 py-2 border border-[#e5e5e5] text-[#7209B7] rounded-md">
+            <button
+              type="button"
+              className="flex gap-x-2 items-center my-6 px-2 py-2 border border-[#e5e5e5] text-[#7209B7] rounded-md"
+              onClick={onAddAccount}  // Call the onAddAccount prop here
+            >
               <TopupIcon primaryColor="#7209B7" />
               <p className="text-[#7209B7]"> Add Bank Account</p>
             </button>
