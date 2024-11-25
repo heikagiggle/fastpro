@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FC, useMemo } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { DashboardIcon } from '../../icons/dashboard';
@@ -9,7 +9,6 @@ import { cn } from '@app/components/utils/cn';
 import { IconProps } from '../../../../components/icons/types';
 import { MoneyIcon } from '../../icons/money';
 import { ReportIcon } from '../../icons/report';
-import { SupportIcon } from '../../icons/support';
 import { SettingsIcon } from '../../icons/setting';
 import { Synergy } from '../../../../components/icons/synergy';
 import Image from 'next/image';
@@ -24,6 +23,11 @@ interface NavItem {
 
 const VendorSidebar = () => {
   const pathName = usePathname();
+  const [openProfile, setOpenProfile] = useState(false);
+
+  const handleClick = () => {
+    setOpenProfile((prev) => !prev);
+  };
 
   const mainMenuItems: NavItem[] = useMemo(
     () => [
@@ -33,7 +37,11 @@ const VendorSidebar = () => {
         Logo: CubeIcon,
         label: 'RFP Management',
       },
-      { url: '/vendor/dashboard/my-proposal/', Logo: MoneyIcon, label: 'My Proposal' },
+      {
+        url: '/vendor/dashboard/my-proposal/',
+        Logo: MoneyIcon,
+        label: 'My Proposal',
+      },
       { url: '/vendor/dashboard/projects/', Logo: CubeIcon, label: 'Projects' },
       {
         url: '/vendor/dashboard/account-receivable/',
@@ -57,7 +65,6 @@ const VendorSidebar = () => {
         Logo: SettingsIcon,
         label: 'Settings',
       },
-    //   { url: '/vendor/dashboard/support/', Logo: SupportIcon, label: 'Support' },
     ],
     []
   );
@@ -87,7 +94,7 @@ const VendorSidebar = () => {
           <li
             key={nav.label}
             className={cn(
-              ' hover:bg-pink-100 hover:bg-opacity-20 border-transparent duration-200 ease-out text-sm',
+              'hover:bg-pink-100 hover:bg-opacity-20 border-transparent duration-200 ease-out text-sm',
               active === nav.url
                 ? '!bg-[#F2F2F2] rounded-sm border-l-4 border-[#7209B7]'
                 : ''
@@ -110,7 +117,6 @@ const VendorSidebar = () => {
         ))}
       </ul>
 
-      {/* Spacer to push bottom items to the bottom */}
       <div className="flex-grow" />
 
       {/* Bottom-aligned items */}
@@ -139,19 +145,51 @@ const VendorSidebar = () => {
               <span className="p-1">{nav.label}</span>
             </Link>
           </li>
-        ))}{' '}
-        <div className="flex gap-x-3 py-3 items-center">
-          <div>
-            <Image src={'/avatar.png'} alt="profile" width={150} height={150} />
+        ))}
+
+        {/* Profile details with dropdown */}
+        <div className="relative">
+          <div
+            className="flex gap-x-3 py-3 items-center cursor-pointer"
+            onClick={handleClick}
+          >
+            <div>
+              <Image
+                src={'/avatar.png'}
+                alt="profile"
+                width={150}
+                height={150}
+              />
+            </div>
+
+            <div>
+              <p className="font-medium">Sophia Williams</p>
+              <p className="text-xs text-[#666666]">sophia@synergyplc.com</p>
+            </div>
+            <div>
+              <ForwardArrowIcon />
+            </div>
           </div>
 
-          <div>
-            <p className="font-medium">Sophia Williams</p>
-            <p className="text-xs text-[#666666]">sophia@synergyplc.com</p>
-          </div>
-          <div>
-            <ForwardArrowIcon />
-          </div>
+          {openProfile && (
+            <div className="absolute bg-white border border-[#e5e5e5] text-sm right-0 bottom-0 mt-2 mb-[4rem] z-20 p-4 space-y-2 shadow-lg rounded-md w-[200px] ">
+              <Link
+                href="/vendor/dashboard/settings/"
+                className="block cursor-pointer hover:text-red-500 font-semibold"
+              >
+                Settings
+              </Link>
+              <p
+                className="cursor-pointer hover:text-red-500 font-semibold"
+                onClick={() => {
+                  console.log('Logging out...');
+                  setOpenProfile(false);
+                }}
+              >
+                Log out
+              </p>
+            </div>
+          )}
         </div>
       </ul>
     </div>

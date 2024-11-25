@@ -15,7 +15,7 @@ export function UploadIcon({ className }: IconProps) {
         stroke="#7209B7"
         stroke-width="1.66667"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

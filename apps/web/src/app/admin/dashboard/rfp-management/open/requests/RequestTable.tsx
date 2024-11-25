@@ -5,7 +5,7 @@ import {
   NewbidPropsData,
   NewbidProps,
 } from '../../../components/table-body/data';
-import { BidTableHeader } from '../../../utils/constants/headers';
+import { BidTableHeader } from '../../../../../utils/constants/headers';
 import { RequestTableBody } from './RequestTableBody';
 
 export function RequestTable() {

@@ -30,7 +30,33 @@ export const CompletedPaymentTableHeader = [
 export const virtualAccountHeader = [
   { title: 'Bank Name', className: 'pl-5' },
   { title: 'Account Name', className: 'pl-5 ' },
-  { title: 'Timw Stamp' },
+  { title: 'Time Stamp' },
   { title: 'Amount' },
+  { title: 'Status', className: 'pr-5' },
+] as const;
+
+export const MyProposalHeader = [
+  { title: 'Date Submitted' },
+  { title: 'Rfp Title' },
+  { title: 'Proposal Delivery Date' },
+  { title: 'Status', className: 'item-center text-center' },
+] as const;
+
+export const AccountOpenTableHeader = [
+  { title: 'Project Title', className: 'pl-5 ' },
+  { title: 'company Info', className: 'pl-5' },
+  { title: 'Amount Due' },
+  { title: 'Invoice Date', className: 'pr-5' },
+  { title: 'Payment Terms' },
+  { title: 'Status', className: 'pr-5' },
+] as const;
+
+export const AccountInvoiceTableHeader = [
+  { title: 'Invoice Number', className: 'pl-5' },
+  { title: 'Project Title', className: 'pl-5 ' },
+  { title: 'company Info', className: 'pl-5' },
+  { title: 'Amount Due' },
+  { title: 'Payment Terms' },
+  { title: 'Invoice Date', className: 'pr-5' },
   { title: 'Status', className: 'pr-5' },
 ] as const;

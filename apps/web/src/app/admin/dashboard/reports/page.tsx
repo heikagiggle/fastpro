@@ -1,6 +1,6 @@
 import React from 'react';
 import ReportCard from './components/card/ReportCards';
-import CategoryChart from '../components/charts/CategoryChart';
+import { CategoryChart } from '../components/charts/CategoryChart';
 import TotalPayouts from './components/chart/TotalPayouts';
 import TopVendors from './components/top-vendors/TopVendors';
 import { ArrowDown } from '../../../components/icons/arrow-down';

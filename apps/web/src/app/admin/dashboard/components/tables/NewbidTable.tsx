@@ -1,7 +1,7 @@
 import { Card } from '@app/components/lib/ui/card';
 import { Table } from '@app/components/lib/widgets/Table/Table';
 import { ApiResponse } from '@app/types';
-import { BidTableHeader } from '../../utils/constants/headers';
+import { BidTableHeader } from '../../../../utils/constants/headers';
 import { NewbidTableBody } from '../table-body/NewbidTableBody';
 
 import { NewbidProps, NewbidPropsData } from '../table-body/data';

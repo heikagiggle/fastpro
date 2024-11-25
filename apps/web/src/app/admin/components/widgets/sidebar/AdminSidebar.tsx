@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FC, useMemo } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { DashboardIcon } from '../../icons/dashboard';
@@ -24,6 +24,11 @@ interface NavItem {
 
 const AdminSidebar = () => {
   const pathName = usePathname();
+  const [openProfile, setOpenProfile] = useState(false);
+
+  const handleClick = () => {
+    setOpenProfile((prev) => !prev);
+  };
 
   const mainMenuItems: NavItem[] = useMemo(
     () => [
@@ -111,7 +116,6 @@ const AdminSidebar = () => {
         ))}
       </ul>
 
-      {/* Spacer to push bottom items to the bottom */}
       <div className="flex-grow" />
 
       {/* Bottom-aligned items */}
@@ -140,19 +144,50 @@ const AdminSidebar = () => {
               <span className="p-1">{nav.label}</span>
             </Link>
           </li>
-        ))}{' '}
-        <div className="flex gap-x-3 py-3 items-center">
-          <div>
-            <Image src={'/avatar.png'} alt="profile" width={150} height={150} />
+        ))}
+
+        <div className="relative">
+          <div
+            className="flex gap-x-3 py-3 items-center cursor-pointer"
+            onClick={handleClick}
+          >
+            <div>
+              <Image
+                src={'/avatar.png'}
+                alt="profile"
+                width={150}
+                height={150}
+              />
+            </div>
+
+            <div>
+              <p className="font-medium">Sophia Williams</p>
+              <p className="text-xs text-[#666666]">sophia@synergyplc.com</p>
+            </div>
+            <div>
+              <ForwardArrowIcon />
+            </div>
           </div>
 
-          <div>
-            <p className="font-medium">Sophia Williams</p>
-            <p className="text-xs text-[#666666]">sophia@synergyplc.com</p>
-          </div>
-          <div>
-            <ForwardArrowIcon />
-          </div>
+          {openProfile && (
+            <div className="absolute bg-white border border-[#e5e5e5] text-sm right-0 bottom-0 mt-2 mb-[4rem] z-20 p-4 space-y-2 shadow-lg rounded-md w-[200px] ">
+              <Link
+                href="/vendor/dashboard/settings/"
+                className="block cursor-pointer hover:text-red-500 font-semibold"
+              >
+                Settings
+              </Link>
+              <p
+                className="cursor-pointer hover:text-red-500 font-semibold"
+                onClick={() => {
+                  console.log('Logging out...');
+                  setOpenProfile(false);
+                }}
+              >
+                Log out
+              </p>
+            </div>
+          )}
         </div>
       </ul>
     </div>

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
 import LeaveReview from '../../components/modal/LeaveReview';
+import { StarIcon } from '../../../../../components/icons/star';
 
 const milestones = [
   { name: 'Milestone 1', payment: '50% Payment', completed: true },
@@ -88,7 +89,13 @@ const VendorDetailsId = () => {
                 <div className="flex gap-x-2">
                   <div>
                     <p>Ratings</p>
-                    <p className="font-normal">⭐⭐⭐⭐⭐</p>
+                    <div className="flex gap-x-1 items-center">
+                      <StarIcon />
+                      <StarIcon />
+                      <StarIcon />
+                      <StarIcon />
+                      <StarIcon />
+                    </div>
                   </div>
                 </div>
 

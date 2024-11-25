@@ -4,7 +4,7 @@ import { ApiResponse } from '@app/types';
 
 import { PendingTableBody } from '../table-body/PendingTableBody';
 import { PendingProps, PendingPropsData } from '../table-body/data';
-import { AccountPayableTableHeader } from '../../../utils/constants/headers';
+import { AccountPayableTableHeader } from '../../../../../utils/constants/headers';
 
 export function PendingTable() {
   function fetcher(): Promise<ApiResponse<PendingProps[]>> {

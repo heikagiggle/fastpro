@@ -3,7 +3,7 @@ import { Table } from '@app/components/lib/widgets/Table/Table';
 import { ApiResponse } from '@app/types';
 
 import { PendingProps, PendingPropsData } from '../table-body/data';
-import { AccountPayableTableHeader } from '../../../utils/constants/headers';
+import { AccountPayableTableHeader } from '../../../../../utils/constants/headers';
 import { DeniedTableBody } from '../table-body/DeniedTableBody';
 
 export function DeniedTable() {

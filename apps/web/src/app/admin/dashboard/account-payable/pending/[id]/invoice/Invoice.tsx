@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Invoice = () => {
-  // TODO
+   // TODO fix the table properly
   return (
     <div className="w-[60%] p-4 rounded-xl border border-[rgba(0,0,0,0.3)] bg-white flex flex-col">
       <div className="bg-[#F2F5F9] px-6 py-2 rounded-lg">

@@ -1,6 +1,6 @@
 
 import DashboardCardStats from './components/card/DashboardCard'
-import CategoryChart from './components/charts/CategoryChart'
+import {CategoryChart} from './components/charts/CategoryChart'
 import { NewBidTable } from './components/tables/NewbidTable'
 
 

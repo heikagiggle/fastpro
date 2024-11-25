@@ -14,7 +14,7 @@ export function CompanyProfileIcon({ className }: IconProps) {
         <path
           d="M0 48C0 21.4903 21.4903 0 48 0C74.5097 0 96 21.4903 96 48C96 74.5097 74.5097 96 48 96C21.4903 96 0 74.5097 0 48Z"
           fill="url(#paint0_linear_2390_52855)"
-          fill-opacity="0.1"
+          fillOpacity="0.1"
         />
         <path
           d="M0.5 48C0.5 21.7665 21.7665 0.5 48 0.5C74.2335 0.5 95.5 21.7665 95.5 48C95.5 74.2335 74.2335 95.5 48 95.5C21.7665 95.5 0.5 74.2335 0.5 48Z"

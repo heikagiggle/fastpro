@@ -22,6 +22,7 @@ const GeneralSettings = () => {
   return (
     <div className="flex gap-x-12 my-6">
       <div>
+        {' '}
         <Menu
           items={menuItems}
           activeItem={activeItem}

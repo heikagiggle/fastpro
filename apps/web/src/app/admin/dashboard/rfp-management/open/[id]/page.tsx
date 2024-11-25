@@ -13,8 +13,6 @@ import Accepted from '../accepted/Accepted';
 const OpenRfpbyId = () => {
   const { id } = useParams();
   const searchParams = useSearchParams();
-  const company = searchParams.get('company');
-  const deadline = searchParams.get('deadline');
 
   const tab = searchParams.get('tab') || 'service_details';
   if (!tab) redirect('?tab=service_details');
