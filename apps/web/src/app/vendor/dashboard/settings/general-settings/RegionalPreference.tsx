@@ -44,7 +44,7 @@ const RegionalPreference = () => {
         <SelectInput
           name={'language'}
           label={'Language*'}
-          placeholder={'Select Company Size'}
+          placeholder={'Select Language'}
           items={[
             {
               label: '1 - 5',
@@ -69,9 +69,9 @@ const RegionalPreference = () => {
           </div>
 
           <SelectInput
-            name={'company_size'}
+            name={'time'}
             label={''}
-            placeholder={''}
+            placeholder={'Select time'}
             items={[
               {
                 label: '24 hours',
@@ -97,9 +97,9 @@ const RegionalPreference = () => {
           </div>
 
           <SelectInput
-            name={'company_size'}
+            name={'date'}
             label={''}
-            placeholder={''}
+            placeholder={'Select date'}
             items={[
               {
                 label: 'DD/MM/YYYY',
